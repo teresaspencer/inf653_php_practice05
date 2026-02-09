@@ -133,25 +133,8 @@ the result in list item 10b. */
 
 <body>
     <main>
-        <p>
-            🚨 You need to <span id="createUser">create a user</span> before you can submit your project.
-        </p>
-        <p>
-            👉 You may need to enable pop-ups for this site if your browser blocks them.
-        </p>
-        <section id="newUserSection">
-            <label for="newUser">
-                <span class="honey">This is your User ID.</span>
-                Copy, paste, and save it somewhere safe. You'll need it to submit this assignment and all future
-                assignments and projects this semester! And it will NOT be available to view again.
-            </label>
-            <input type="text" id="newUser" />
-        </section>
-        <p>
-            Did you:
-        </p>
         <ul>
-            <li>Create a User ID?</li>
+            <li>Got Your User ID? (You created it week one)</li>
             <li>Complete Your Assignment?</li>
             <li>If so, you are ready to click submit.</li>
         </ul>
