@@ -155,6 +155,7 @@ the result in list item 10b. */
         <p>Your output should only be in the ordered list below.</p>
         <ul>
           2. <li id="2"><?php echo $myVehicle->get_type(); ?></li>
+          2. <li id="2"><?php echo $myVehicle->get_type(); ?></li>
           3a. <li id="3a"><?php /* #3a output here */ ?></li>
           3b. <li id="3b"><?php /* #3b output here */ ?></li>
           4. <li id="4"><?php /* #4 output here */ ?></li>
