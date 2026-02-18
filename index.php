@@ -15,12 +15,25 @@ a get_type method to the class.
 
 This problem has no output.
 */
+class Vehicle {
+    private $type;
 
+    public function set_type($type) {
+        $this->type = $type;
+    }
+
+    public function get_type() {
+        return $this->type;
+    }
+}
 
 /* 02: Create an instance of Vehicle named
 $myVehicle and pass in the value "electric"
 to the constructor. Call the get_type function on the
 instance and output the result. */
+$myVehicle = new Vehicle;
+$myVehicle->set_type('electric');
+
 
 
 /* 03: Decode the following $jsonObj and store it
@@ -141,7 +154,7 @@ the result in list item 10b. */
         <button id="submitButton">Submit Your Assignment</button>
         <p>Your output should only be in the ordered list below.</p>
         <ul>
-          2. <li id="2"><?php /* #2 output here */ ?></li>
+          2. <li id="2"><?php echo $myVehicle->get_type(); ?></li>
           3a. <li id="3a"><?php /* #3a output here */ ?></li>
           3b. <li id="3b"><?php /* #3b output here */ ?></li>
           4. <li id="4"><?php /* #4 output here */ ?></li>
