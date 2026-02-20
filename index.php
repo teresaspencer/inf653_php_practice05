@@ -16,7 +16,11 @@ a get_type method to the class.
 This problem has no output.
 */
 class Vehicle {
-    private $type;
+    public $type;
+
+    public function __construct($type) {
+        $this->type = $type;
+    }
 
     public function set_type($type) {
         $this->type = $type;
@@ -31,8 +35,8 @@ class Vehicle {
 $myVehicle and pass in the value "electric"
 to the constructor. Call the get_type function on the
 instance and output the result. */
-$myVehicle = new Vehicle;
-$myVehicle->set_type('electric');
+$myVehicle = new Vehicle('electric');
+//$myVehicle->set_type('electric');
 
 
 
@@ -47,12 +51,14 @@ $jsonObj = '{
     "body": "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto"
   }';
 /* Do not change the above object */
+$postObj = json_decode($jsonObj);
 
 
 /* 04: This line of code is reading the posts.json file: */
 $postsJSON = file_get_contents('posts.json');
 /* Decode $postsJSON and output the title from the
 third element in the resulting array. */
+$obj = json_decode($postsJSON);
 
 
 /* 05: This line of code is reading the users.json file: */
@@ -62,12 +68,15 @@ $usersJSON = file_get_contents('users.json');
 - Loop through the decode result and output the email of
 each user in a new list item. Your list items will be 
 nested inside the list item with the id of 5. */
+$usersArray = json_decode($usersJSON, true);
 
 
 /* 06: Create a new Vehicle instance named myTruck
 from the Vehicle class you created in #01. Pass in the
 value "gasoline" to the constructor. Output the
 result of using json_encode on $myTruck  */
+$myTruck = new Vehicle("gasoline");
+
 
 
 /* 07: Create a new class named Pet.
@@ -85,6 +94,32 @@ the value of the $sound property.
 
 This problem has no output.
 */
+class Pet {
+    public $name;
+    public $species;
+    private $sound;
+
+    public function __construct($name, $sound) {
+        $this->name = $name;
+        $this->sound = $sound;
+    }
+
+    public function get_name() {
+        return $this->name;
+    }
+
+    public function get_species() {
+        return $this->species;
+    }
+
+    public function set_species($species) {
+        $this->species = $species;
+    }
+
+    public function speak() {
+        echo $this->sound;
+    }
+}
 
 
 /* 08: Create three instances of the Pet
@@ -95,6 +130,9 @@ class. $pet1, $pet2, and $pet3.
 Call the speak method for each Pet instance and output
 the result. Put the output for Spot in 8a, Lucky in 8b 
 and Daisy in 8c. */
+$pet1 = new Pet('Spot', 'Moo!');
+$pet2 = new Pet('Lucky', 'Bark!');
+$pet3 = new Pet('Daisy', 'Quack!');
 
 
 /* 09: Use the set_species method on each pet
@@ -114,7 +152,11 @@ inside of the list item with id of 9.
 Not sure about the reverse?
 Look at the PHP docs.
 */
+$pet1->set_species('Cow');
+$pet2->set_species('Dog');
+$pet3->set_species('Duck');
 
+$petArray = [$pet1, $pet2, $pet3];
 
 /* 10: Take the $petArray from above
 (not the reverse one!), and encode it as JSON.
@@ -126,6 +168,7 @@ of the Vehicle class and create a $rides array.
 Encode the $rides array to JSON and output
 the result in list item 10b. */
 
+$rides = [$myVehicle, $myTruck];
 
 ?>
 
@@ -156,25 +199,29 @@ the result in list item 10b. */
         <ul>
           2. <li id="2"><?php echo $myVehicle->get_type(); ?></li>
           2. <li id="2"><?php echo $myVehicle->get_type(); ?></li>
-          3a. <li id="3a"><?php /* #3a output here */ ?></li>
-          3b. <li id="3b"><?php /* #3b output here */ ?></li>
-          4. <li id="4"><?php /* #4 output here */ ?></li>
+          3a. <li id="3a"><?php echo $postObj->title; ?></li>
+          3b. <li id="3b"><?php echo $postObj->body; ?></li>
+          4. <li id="4"><?php echo $obj[2]->title; ?></li>
           5. <li id="5"> 
               <ul><?php
-                /* #5 output here */
+                foreach ($usersArray as $user) {
+                    echo '<li>' . $user['email'] . '</li>';
+                }
               ?></ul>
             </li>
-          6. <li id="6"><?php /* #6 output here */ ?></li>
-          8a. <li id="8a"><?php /* #8a output here */ ?></li>
-          8b. <li id="8b"><?php /* #8b output here */ ?></li>
-          8c. <li id="8c"><?php /* #8c output here */ ?></li>
+          6. <li id="6"><?php echo json_encode($myTruck); ?></li>
+          8a. <li id="8a"><?php $pet1->speak(); ?></li>
+          8b. <li id="8b"><?php $pet2->speak(); ?></li>
+          8c. <li id="8c"><?php $pet3->speak(); ?></li>
           9. <li id="9"> 
               <ul><?php 
-                /* #9 output here */
+                foreach (array_reverse($petArray) as $pet) {
+                    echo '<li>' . $pet->get_name() . '</li>';
+                }
               ?></ul>
             </li>
-          10a. <li id="10a"><?php /* #10a output here */ ?></li>
-          10b. <li id="10b"><?php /* #10b output here */ ?></li>
+          10a. <li id="10a"><?php echo json_encode($petArray); ?></li>
+          10b. <li id="10b"><?php echo json_encode($rides); ?></li>
         </ul>
     </main>
 
