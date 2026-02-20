@@ -198,7 +198,7 @@ $rides = [$myVehicle, $myTruck];
         <p>Your output should only be in the ordered list below.</p>
         <ul>
           2. <li id="2"><?php echo $myVehicle->get_type(); ?></li>
-          2. <li id="2"><?php echo $myVehicle->get_type(); ?></li>
+         <!-- 2. <li id="2"><?php echo $myVehicle->get_type(); ?></li> -->
           3a. <li id="3a"><?php echo $postObj->title; ?></li>
           3b. <li id="3b"><?php echo $postObj->body; ?></li>
           4. <li id="4"><?php echo $obj[2]->title; ?></li>
